@@ -17,6 +17,7 @@ void LoadStartUpData()
         else
         {
             Console.WriteLine($"{item.Name} was NOT added to the database.");
+            Console.WriteLine("test");
         }
     }
 }
