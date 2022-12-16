@@ -39,6 +39,40 @@ namespace DungeonMasterRepository_2022
             }
         }
 
+        public List<Item> GetAllItems()
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext(_optionsBuilder.Options))
+            {
+                return db.Items.ToList();
+            }
+        }
+
+        public Item GetItemById(int itemId)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext(_optionsBuilder.Options))
+            {
+                return db.Items.FirstOrDefault(x => x.Id == itemId);
+            }
+        }
+
+        public void UpdateItem(Item itemToUpdate)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext(_optionsBuilder.Options))
+            {
+                db.Items.Update(itemToUpdate);
+                db.SaveChanges();
+            }
+        }
+
+        public void DeleteItem(Item itemToDelete)
+        {
+            using (ApplicationDbContext db = new ApplicationDbContext(_optionsBuilder.Options))
+            {
+                db.Items.Remove(itemToDelete);
+                db.SaveChanges();
+            }
+        }
+
     }
 
 }
